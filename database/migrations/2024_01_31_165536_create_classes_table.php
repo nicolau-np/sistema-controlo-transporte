@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('curso_id');
             $table->string('classe');
             $table->string('estado')->default('on');
             $table->timestamps();
-
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
         });
     }
 

@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'bi',
+        'telefone',
+        'estado',
+    ];
+
+    public function motorista()
+    {
+        return $this->hasMany(Motorista::class, 'pessoa_id');
+    }
+
+    public function estudante(){
+        return $this->hasMany(Estudante::class, 'estudante_id');
+    }
 }

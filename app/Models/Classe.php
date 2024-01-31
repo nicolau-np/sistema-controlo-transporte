@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'classe',
+        'estado',
+    ];
+
+    public function turma(){
+        return $this->hasMany(Turma::class, 'classe_id');
+    }
 }

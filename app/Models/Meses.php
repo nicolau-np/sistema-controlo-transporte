@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Meses extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+       'numero_ordem',
+        'mes',
+        'estado',
+    ];
+
 }

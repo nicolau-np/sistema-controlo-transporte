@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'classe_id',
+        'curso_id',
+        'turma',
+        'estado',
+    ];
+
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class, 'curso_id');
+    }
+
+    public function classe()
+    {
+        return $this->belongsTo(Classe::class, 'classe_id');
+    }
 }
