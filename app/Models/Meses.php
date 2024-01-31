@@ -15,4 +15,8 @@ class Meses extends Model
         'estado',
     ];
 
+    public function pagamento(){
+        return $this->hasMany(Pagamento::class, 'mes_id');
+    }
+
 }

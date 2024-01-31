@@ -21,4 +21,8 @@ class Viatura extends Model
     public function viaturaMotorista(){
         return $this->hasMany(ViaturaMotorista::class, 'viatura_id');
     }
+
+    public function pagamento(){
+        return $this->hasMany(Pagamento::class, 'viatura_id');
+    }
 }

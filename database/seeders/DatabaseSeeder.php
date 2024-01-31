@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CursoSeeder::class,
             TurmaSeeder::class,
             MesSeeder::class,
+            TabelaPrecoSeeder::class,
         ]);
     }
 }
