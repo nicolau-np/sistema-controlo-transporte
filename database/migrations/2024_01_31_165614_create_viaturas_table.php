@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('viaturas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('nivel_acesso');
-            $table->rememberToken();
+            $table->string('matricula')->unique();
+            $table->string('marca');
+            $table->string('modelo');
+            $table->string('cor')->nullable();
+            $table->integer('numero_lugares');
+            $table->string('estado')->default('on');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('viaturas');
     }
 };
