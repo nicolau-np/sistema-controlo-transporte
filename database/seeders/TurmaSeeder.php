@@ -12,76 +12,26 @@ class TurmaSeeder extends Seeder
         [
             'classe_id' => 1,
             'curso_id' => 1,
-            'turma' => "Info.1",
+            'turma' => "Med. 1",
         ], [
             'classe_id' => 2,
             'curso_id' => 1,
-            'turma' => "Info.1",
+            'turma' => "Med. 2",
         ], [
             'classe_id' => 3,
             'curso_id' => 1,
-            'turma' => "Info.1",
+            'turma' => "Med. 3",
         ], [
             'classe_id' => 4,
             'curso_id' => 1,
-            'turma' => "Info.1",
+            'turma' => "Med. 4",
+        ],[
+            'classe_id' => 5,
+            'curso_id' => 1,
+            'turma' => "Med. 5",
         ],
 
 
-        [
-            'classe_id' => 1,
-            'curso_id' => 2,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 2,
-            'curso_id' => 2,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 3,
-            'curso_id' => 2,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 4,
-            'curso_id' => 2,
-            'turma' => "Info.1",
-        ],
-
-
-        [
-            'classe_id' => 1,
-            'curso_id' => 3,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 2,
-            'curso_id' => 3,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 3,
-            'curso_id' => 3,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 4,
-            'curso_id' => 3,
-            'turma' => "Info.1",
-        ],
-
-        [
-            'classe_id' => 1,
-            'curso_id' => 4,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 2,
-            'curso_id' => 4,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 3,
-            'curso_id' => 4,
-            'turma' => "Info.1",
-        ], [
-            'classe_id' => 4,
-            'curso_id' => 4,
-            'turma' => "Info.1",
-        ],
     ];
     /**
      * Run the database seeds.

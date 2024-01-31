@@ -10,17 +10,8 @@ class CursoSeeder extends Seeder
 {
     static $cursos = [
         [
-            'curso' => "Informática",
-            'sigla' => "Info.",
-        ], [
-            'curso' => "Ciências Físicas Biológicas",
-            'sigla' => "C.F.B",
-        ], [
-            'curso' => "Mecânica",
-            'sigla' => "Mec.",
-        ], [
-            'curso' => "Ciências Humanas",
-            'sigla' => "C.H",
+            'curso' => "Medicina",
+            'sigla' => "Med.",
         ],
 
     ];

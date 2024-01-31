@@ -10,13 +10,15 @@ class ClasseSeeder extends Seeder
 {
     static $classes = [
         [
-            'classe'=>"10ª",
+            'classe'=>"1º Ano",
         ],[
-            'classe'=>"11ª",
+            'classe'=>"2º Ano",
         ],[
-            'classe'=>"12ª",
+            'classe'=>"3º Ano",
         ],[
-            'classe'=>"13ª",
+            'classe'=>"4º Ano",
+        ],[
+            'classe'=>"5º Ano",
         ],
     ];
     /**
