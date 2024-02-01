@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EstudanteController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MotoristaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViaturaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +19,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::resource('estudantes', EstudanteController::class);
+Route::resource('motoristas', MotoristaController::class);
+Route::resource('users', UserController::class);
+Route::resource('viaturas', ViaturaController::class);
+
+Route::prefix('auth')->group(function(){
+    Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+    Route::post('login', [AuthController::class, 'logar'])->middleware('guest');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
+
