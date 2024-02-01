@@ -22,8 +22,11 @@
 
 </head>
 
-<body id="page-top">
+<body id="{{ $type=="login" ? 'bg-gradient-primary':'page-top' }}">
 
+    @if($type=="login")
+@yield('content')
+    @else
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -417,7 +420,7 @@
             </div>
         </div>
     </div>
-
+@endif
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
