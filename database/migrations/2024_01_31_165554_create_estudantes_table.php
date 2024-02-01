@@ -16,10 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('pessoa_id');
             $table->unsignedBigInteger('turma_id');
             $table->string('numero_estudante')->nullable();
+            $table->string('ano_lectivo');
             $table->string('estado')->default('on');
             $table->timestamps();
-
-
         });
     }
 

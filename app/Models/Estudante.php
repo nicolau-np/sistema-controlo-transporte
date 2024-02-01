@@ -13,6 +13,7 @@ class Estudante extends Model
         'pessoa_id',
         'turma_id',
         'numero_estudante',
+        'ano_lectivo',
         'estado',
     ];
 

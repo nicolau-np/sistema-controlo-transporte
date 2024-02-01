@@ -1,8 +1,14 @@
 <div>
     @include('include.message')
-    <div class="filter mb-4">
-        <input type="text" wire:model="text_search" class="form-control" id="" placeholder="Pesquisar..." />
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <input type="text" wire:model="text_search" class="form-control" id="" placeholder="Pesquisar..." />
+        </div>
+        <div class="col-md-2">
+            <a href="/estudantes/create" class="btn btn-success">Novo</a>
+        </div>
     </div>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

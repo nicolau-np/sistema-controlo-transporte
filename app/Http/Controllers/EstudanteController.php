@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classe;
 use App\Models\Estudante;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,12 @@ class EstudanteController extends Controller
      */
     public function create()
     {
-        //
+   
+        $title = 'Estudantes';
+        $menu = 'Novo';
+        $type = 'estudantes';
+
+        return view('estudantes.create', compact('title', 'menu', 'type'));
     }
 
     /**
