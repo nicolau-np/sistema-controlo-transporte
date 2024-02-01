@@ -10,6 +10,8 @@
 
     <!-- Content Row -->
     <div class="row">
+        @livewire('estudante-create-form')
+        
         <div class="col-md-12">
 
         </div>
