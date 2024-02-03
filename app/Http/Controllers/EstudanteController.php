@@ -13,12 +13,12 @@ class EstudanteController extends Controller
      */
     public function index()
     {
-
+        $estudantes = Estudante::orderBy('id', 'asc')->paginate(10);
         $title = 'Estudantes';
         $menu = 'Listar';
         $type = 'estudantes';
 
-        return view('estudantes.index', compact('title', 'menu', 'type'));
+        return view('estudantes.index', compact('title', 'menu', 'type', 'estudantes'));
     }
 
     /**
@@ -76,6 +76,6 @@ class EstudanteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }
