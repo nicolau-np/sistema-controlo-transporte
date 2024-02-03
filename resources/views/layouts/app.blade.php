@@ -45,7 +45,7 @@
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
+                <li class="nav-item {{ $type=="home" ? "active" : null  }}">
                     <a class="nav-link" href="/">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Principal</span></a>
@@ -56,28 +56,28 @@
 
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item">
+                <li class="nav-item {{ $type=="estudantes" ? "active" : null  }}">
                     <a class="nav-link" href="/estudantes">
                         <i class="fas fa-fw fa-users"></i>
                         <span>Estudantes</span></a>
                 </li>
 
                  <!-- Nav Item - Charts -->
-                 <li class="nav-item">
+                 <li class="nav-item {{ $type=="users" ? "active" : null  }}">
                     <a class="nav-link" href="/users">
                         <i class="fas fa-fw fa-lock"></i>
                         <span>Usuários</span></a>
                 </li>
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item">
+                <li class="nav-item {{ $type=="motoristas" ? "active" : null  }}">
                     <a class="nav-link" href="/motoristas">
                         <i class="fas fa-fw fa-user"></i>
                         <span>Motoristas</span></a>
                 </li>
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item">
+                <li class="nav-item {{ $type=="viaturas" ? "active" : null  }}">
                     <a class="nav-link" href="/viaturas">
                         <i class="fas fa-fw fa-car"></i>
                         <span>Viaturas</span></a>
@@ -88,14 +88,14 @@
                 <hr class="sidebar-divider">
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item">
+                <li class="nav-item {{ $type=="pagamentos" ? "active" : null  }}">
                     <a class="nav-link" href="/pagamentos">
                         <i class="fas fa-fw fa-money-bill"></i>
                         <span>Pagamentos</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item">
+                <li class="nav-item {{ $type=="relatorios" ? "active" : null  }}">
                     <a class="nav-link" href="/reports">
                         <i class="fas fa-fw fa-file"></i>
                         <span>Relatórios</span></a>
