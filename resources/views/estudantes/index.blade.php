@@ -32,7 +32,6 @@
                         <thead>
                             <tr>
                                 <th>B.I</th>
-                                <th>Numero de Estudante</th>
                                 <th>Nome</th>
                                 <th>Telefone</th>
                                 <th>Turma</th>
@@ -43,7 +42,7 @@
                             @foreach ($estudantes as $estudante)
                                 <tr>
                                     <td>{{ $estudante->pessoa->bi }}</td>
-                                    <td>{{ $estudante->numero_estudante }}</td>
+
                                     <td>{{ $estudante->pessoa->nome }}</td>
                                     <td>{{ $estudante->pessoa->telefone }}</td>
                                     <td>{{ $estudante->turma->turma }}</td>
