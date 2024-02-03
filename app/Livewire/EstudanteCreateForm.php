@@ -71,12 +71,13 @@ class EstudanteCreateForm extends Component
             $pessoa = Pessoa::create($data_pessoa);
             $data_estudante['pessoa_id'] = $pessoa->id;
             Estudante::create($data_estudante);
-$this->clearFields();
+            $this->clearFields();
             return back()->with('success', 'Feito com sucesso');
         });
     }
 
-    public function clearFields(){
+    public function clearFields()
+    {
         $this->curso_id = null;
         $this->classe_id = null;
         $this->turma_id = null;

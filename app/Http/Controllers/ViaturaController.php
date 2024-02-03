@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Viatura;
 use Illuminate\Http\Request;
 
 class ViaturaController extends Controller
@@ -11,7 +12,12 @@ class ViaturaController extends Controller
      */
     public function index()
     {
-        //
+        $motoristas = Viatura::orderBy('id', 'asc')->paginate(10);
+        $title = 'Viatura';
+        $menu = 'Listar';
+        $type = 'viaturas';
+
+        return view('motoristas.index', compact('title', 'menu', 'type', 'motoristas'));
     }
 
     /**
