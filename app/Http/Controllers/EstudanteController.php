@@ -26,7 +26,7 @@ class EstudanteController extends Controller
      */
     public function create()
     {
-   
+
         $title = 'Estudantes';
         $menu = 'Novo';
         $type = 'estudantes';
@@ -55,7 +55,12 @@ class EstudanteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $title = 'Estudantes';
+        $menu = 'Editar';
+        $type = 'estudantes';
+
+        return view('estudantes.edit', compact('title', 'menu', 'type', 'id'));
     }
 
     /**

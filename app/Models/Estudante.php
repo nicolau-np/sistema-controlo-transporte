@@ -25,4 +25,7 @@ class Estudante extends Model
         return $this->hasMany(Pagamento::class, 'estudante_id');
     }
 
+    public function turma(){
+        return $this->belongsTo(Turma::class, 'turma_id');
+    }
 }

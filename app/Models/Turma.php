@@ -25,4 +25,8 @@ class Turma extends Model
     {
         return $this->belongsTo(Classe::class, 'classe_id');
     }
+
+    public function estudante(){
+        return $this->hasMany(Estudante::class, 'turma_id');
+    }
 }

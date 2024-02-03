@@ -19,7 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    @livewireStyles()
+    @livewireScripts()
 </head>
 
 <body id="{{ $type == 'login' ? 'bg-gradient-primary' : 'page-top' }}">
@@ -45,7 +46,7 @@
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item {{ $type=="home" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'home' ? 'active' : null }}">
                     <a class="nav-link" href="/">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Principal</span></a>
@@ -56,28 +57,28 @@
 
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item {{ $type=="estudantes" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'estudantes' ? 'active' : null }}">
                     <a class="nav-link" href="/estudantes">
                         <i class="fas fa-fw fa-users"></i>
                         <span>Estudantes</span></a>
                 </li>
 
-                 <!-- Nav Item - Charts -->
-                 <li class="nav-item {{ $type=="users" ? "active" : null  }}">
+                <!-- Nav Item - Charts -->
+                <li class="nav-item {{ $type == 'users' ? 'active' : null }}">
                     <a class="nav-link" href="/users">
                         <i class="fas fa-fw fa-lock"></i>
                         <span>Usuários</span></a>
                 </li>
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item {{ $type=="motoristas" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'motoristas' ? 'active' : null }}">
                     <a class="nav-link" href="/motoristas">
                         <i class="fas fa-fw fa-user"></i>
                         <span>Motoristas</span></a>
                 </li>
 
                 <!-- Nav Item - Charts -->
-                <li class="nav-item {{ $type=="viaturas" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'viaturas' ? 'active' : null }}">
                     <a class="nav-link" href="/viaturas">
                         <i class="fas fa-fw fa-car"></i>
                         <span>Viaturas</span></a>
@@ -88,14 +89,14 @@
                 <hr class="sidebar-divider">
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item {{ $type=="pagamentos" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'pagamentos' ? 'active' : null }}">
                     <a class="nav-link" href="/pagamentos">
                         <i class="fas fa-fw fa-money-bill"></i>
                         <span>Pagamentos</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item {{ $type=="relatorios" ? "active" : null  }}">
+                <li class="nav-item {{ $type == 'relatorios' ? 'active' : null }}">
                     <a class="nav-link" href="/reports">
                         <i class="fas fa-fw fa-file"></i>
                         <span>Relatórios</span></a>
@@ -170,8 +171,9 @@
 
                             <!-- Nav Item - Alerts -->
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     <i class="fas fa-bell fa-fw"></i>
                                     <!-- Counter - Alerts -->
                                     <span class="badge badge-danger badge-counter">3+</span>
@@ -216,7 +218,8 @@
                                             Spending Alert: We've noticed unusually high spending for your account.
                                         </div>
                                     </a>
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Ver Todas</a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Ver
+                                        Todas</a>
                                 </div>
                             </li>
 
@@ -288,7 +291,8 @@
                                             <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Ler Mais Mensagens</a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Ler Mais
+                                        Mensagens</a>
                                 </div>
                             </li>
 
@@ -298,7 +302,8 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->username }}</span>
+                                    <span
+                                        class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->username }}</span>
                                     <img class="img-profile rounded-circle"
                                         src="{{ asset('assets/neutro/image/No-photo-m.png') }}">
                                 </a>
@@ -370,7 +375,8 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.</div>
+                    <div class="modal-body">Selecione "Sair" abaixo se estiver pronto para encerrar sua sessão atual.
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                         <a class="btn btn-primary" href="/auth/logout">Sair</a>

@@ -1,14 +1,21 @@
 <div>
     @include('include.message')
+    <form action="/estudantes/search" method="POST">
     <div class="row mb-4">
-        <div class="col-md-8">
-            <input type="text" wire:model="text_search" class="form-control" id="" placeholder="Pesquisar..." />
-        </div>
-        <div class="col-md-2">
-            <a href="/estudantes/create" class="btn btn-success">Novo</a>
-        </div>
-    </div>
 
+            <div class="col-md-8">
+                <input type="text" wire:model="text_search" class="form-control" id=""
+                    placeholder="Pesquisar..." />
+            </div>
+            <div class="col-md-1 mr-3">
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </div>
+            <div class="col-md-2">
+                <a href="/estudantes/create" class="btn btn-success">Novo</a>
+            </div>
+
+    </div>
+</form>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -30,7 +37,7 @@
                         <td>{{ $estudante->pessoa->telefone }}</td>
                         <td>{{ $estudante->turma->turma }}</td>
                         <td>
-                            <a href="/estudantes/{{ $estudante->id }}/edit">Editar</a>
+                            <a href="/estudantes/{{ $estudante->id }}/edit" class="btn btn-primary">Editar</a>
                             <form action="/estudantes/{{ $estudante->id }}" method="POST">
                                 @method('DELETE')
                                 @csrf
@@ -45,6 +52,6 @@
         </table>
     </div>
     <div class="paginate">
-        {{ $estudantes->links() }}
+{{ $estudantes->links() }}
     </div>
 </div>
