@@ -53,7 +53,8 @@
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>-->
-
+                                        
+                                        <a href="/motoristas/{{ $motorista->id }}/viatura" class="btn btn-warning ml-2">+ Viatura</a>
                                     </td>
                                 </tr>
                             @endforeach

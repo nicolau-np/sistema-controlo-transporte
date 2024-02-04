@@ -23,8 +23,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('aut
 
 Route::resource('estudantes', EstudanteController::class);
 Route::resource('motoristas', MotoristaController::class);
+Route::get('motoristas/{id}/viatura', [MotoristaController::class, 'viatura']);
+Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura']);
 Route::resource('users', UserController::class);
 Route::resource('viaturas', ViaturaController::class);
+
 
 Route::prefix('auth')->group(function(){
     Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');

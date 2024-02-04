@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Motorista;
 use App\Models\Pessoa;
+use App\Models\Viatura;
+use App\Models\ViaturaMotorista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -134,5 +136,43 @@ class MotoristaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function viatura($motorista_id)
+    {
+        $motorista = Motorista::findOrFail($motorista_id);
+
+        $viaturas = Viatura::all();
+        $title = 'Motorista';
+        $menu = 'Viatura';
+        $type = 'motoristas';
+
+        return view('motoristas.viatura', compact('title', 'menu', 'type', 'motorista', 'viaturas'));
+    }
+
+    public function saveViatura(Request $request, $motorista_id)
+    {
+
+        $motorista = Motorista::findOrFail($motorista_id);
+
+        $request->validate([
+            'viatura_id' => 'required|integer|exists:viaturas,id',
+            'motorista_id' => 'required|integer|exists:motoristas,id',
+            'data_atribuicao' => 'required|data',
+        ], [], [
+            'viatura_id' => 'Viatura',
+            'motorista_id' => 'Motorista',
+            'data_atribuicao' => 'Data de Atribuição',
+        ]);
+
+        $data_viatura_motorista = [
+            'viatura_id'=>$request->viatura_id,
+            'motorista_id'=>$motorista_id,
+            'data_atribuicao'=>$request->data_atribuicao,
+        ];
+        
+        ViaturaMotorista::create($data_viatura_motorista);
+
+        return back()->with('success', 'Feito com sucesso');
     }
 }
