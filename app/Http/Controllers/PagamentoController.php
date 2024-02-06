@@ -32,14 +32,13 @@ class PagamentoController extends Controller
             if (!$pessoa)
                 return back()->with('error', 'Bilhete de Identidade Inválido');
         }
-        $viaturas = Viatura::orderBy('id', 'asc')->get();
-        $meses = Meses::orderBy('id', 'asc')->get();
+
         $tabela_preco = TabelaPreco::orderBy('id', 'desc')->get()->first();
         $title = 'Pagamentos';
         $menu = 'Pagar';
         $type = 'pagamentos';
 
-        return view('pagamentos.create', compact('title', 'menu', 'type', 'bi', 'meses', 'tabela_preco', 'pessoa', 'viaturas'));
+        return view('pagamentos.create', compact('title', 'menu', 'type', 'bi', 'tabela_preco', 'pessoa'));
     }
 
     public function show($id)
@@ -58,11 +57,13 @@ class PagamentoController extends Controller
         $request->validate([
             'bi' => 'required|string|exists:pessoas,bi',
             'mes_id' => 'required|integer|exists:meses,id',
+            'viatura_id'=>'required|integer|exists:viaturas,id',
             'preco' => 'required|numeric|exists:tabela_precos,preco',
             'ano' => 'required|integer',
         ], [], [
             'bi' => "Nº do Bilhete",
             'mes_id' => "Mês",
+            'viatura_id'=>"Viatura",
             'preco' => 'Preço',
             'ano' => 'Ano',
         ]);
