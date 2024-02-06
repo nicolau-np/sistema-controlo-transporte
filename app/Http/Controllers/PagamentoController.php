@@ -6,18 +6,22 @@ use App\Models\Meses;
 use App\Models\Pagamento;
 use App\Models\Pessoa;
 use App\Models\TabelaPreco;
+use App\Models\Viatura;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class PagamentoController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
+
+        $pagamentos = Pagamento::orderBy('id', 'desc')->paginate(20);
         $title = 'Pagamentos';
-        $menu = 'Listar Pagamento';
+        $menu = 'Listar Pagamentos';
         $type = 'pagamentos';
 
-        return view('pagamentos.index', compact('title', 'menu', 'type'));
+        return view('pagamentos.index', compact('title', 'menu', 'type', 'pagamentos'));
     }
 
     public function create($bi = null)
@@ -28,13 +32,25 @@ class PagamentoController extends Controller
             if (!$pessoa)
                 return back()->with('error', 'Bilhete de Identidade Inválido');
         }
+        $viaturas = Viatura::orderBy('id', 'asc')->get();
         $meses = Meses::orderBy('id', 'asc')->get();
         $tabela_preco = TabelaPreco::orderBy('id', 'desc')->get()->first();
         $title = 'Pagamentos';
         $menu = 'Pagar';
         $type = 'pagamentos';
 
-        return view('pagamentos.create', compact('title', 'menu', 'type', 'bi', 'meses', 'tabela_preco', 'pessoa'));
+        return view('pagamentos.create', compact('title', 'menu', 'type', 'bi', 'meses', 'tabela_preco', 'pessoa', 'viaturas'));
+    }
+
+    public function show($id)
+    {
+        $pagamento = Pagamento::findOrFail($id);
+
+        $title = 'Pagamentos';
+        $menu = 'Detalhes do Pagamento';
+        $type = 'pagamentos';
+
+        return view('pagamentos.show', compact('title', 'menu', 'type', 'pagamento'));
     }
 
     public function confirm(Request $request)

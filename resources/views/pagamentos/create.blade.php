@@ -18,7 +18,7 @@
                     <div class="row">
                         @include('include.message')
 
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="">Nº do Bilhete <span class="text-danger">*</span></label>
                             <input type="text" name="bi" placeholder="Nº do Bilhete" class="form-control"
                                 value="{{ old('bi', $pessoa->bi ?? null) }}" />
@@ -56,6 +56,19 @@
                             @if ($errors->has('ano'))
                                 <span class="text-danger">{{ $errors->first('ano') }}</span>
                             @endif
+                        </div>
+
+
+                        <div class="col-md-12 options-radios mb-3">
+                            <div class="optio-radio">
+                                <input type="radio" id="option1" name="option" value="option1">
+                                <label for="option1">Opção 1</label>
+                            </div>
+                           <br>
+                            <input type="radio" id="option2" name="option" value="option2">
+                            <label for="option2">Opção 2</label><br>
+                            <input type="radio" id="option3" name="option" value="option3">
+                            <label for="option3">Opção 3</label><br>
                         </div>
 
                         <div class="col-md-12">

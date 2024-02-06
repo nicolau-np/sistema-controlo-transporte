@@ -33,6 +33,7 @@ Route::prefix('pagamentos')->group(function () {
     Route::get('create/{bi?}', [PagamentoController::class, 'create']);
     Route::get('confirm', [PagamentoController::class, 'confirm']);
     Route::post('/', [PagamentoController::class, 'store']);
+    Route::get('/{id}', [PagamentoController::class, 'show']);
     Route::get('/', [PagamentoController::class, 'index']);
 });
 
