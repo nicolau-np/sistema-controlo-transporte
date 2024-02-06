@@ -27,6 +27,7 @@ class InputsChooseViatura extends Component
             $lugares_disponiveis_viatura = $viatura->numero_lugares - $lugares_pagos_viatura;
 
             $viatura_array[] = [
+                'id'=>$viatura->id,
                 'matricula' => $viatura->matricula,
                 'marca' => $viatura->marca,
                 'modelo' => $viatura->modelo,
@@ -38,7 +39,6 @@ class InputsChooseViatura extends Component
             ];
         }
 
-        dd($viatura_array);
         $this->viaturas = $viatura_array;
     }
 
