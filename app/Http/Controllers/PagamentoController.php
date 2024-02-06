@@ -7,6 +7,7 @@ use App\Models\Pagamento;
 use App\Models\Pessoa;
 use App\Models\TabelaPreco;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PagamentoController extends Controller
 {
@@ -46,10 +47,11 @@ class PagamentoController extends Controller
         if (!$pessoa)
             return back()->with('error', 'Bilhete de Identidade Inválido');
 
+        $mes = Meses::findOrFail($request->mes_id);
+
         $pagamento = Pagamento::where(['mes_id' => $request->mes_id, 'ano' => $request->ano])->first();
         if ($pagamento)
-            return back()->with('error', 'Já efectuou o pagamento para o Mês selecionado!');
-
+            return back()->with('error', "Já efectuou o pagamento para o Mês de $mes->mes");
 
         $data = [
             'estudante_id' => $pessoa->estudante->first()->id,
@@ -58,14 +60,24 @@ class PagamentoController extends Controller
             'valor' => $request->preco,
         ];
 
+        Session::put('data_pagamento', $data);
+
         $title = 'Pagamentos';
         $menu = 'Confirmar Pagamento';
         $type = 'pagamentos';
 
-        return view('pagamentos.confirm', compact('title', 'menu', 'type', 'data'));
+        return view('pagamentos.confirm', compact('title', 'menu', 'type', 'data', 'pessoa', 'mes'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        if (!Session::has('data_pagamento'))
+            return back()->with('error', 'Erro ao confirmar Pagamento. Tente Novamente');
+
+        $pagamento = Pagamento::create(Session::get('data_pagamento'));
+        if ($pagamento) {
+            Session::forget('data_pagamento');
+            return redirect('/pagamentos/create')->with('success', 'Pagamento Efectuado com sucesso');
+        }
     }
 }

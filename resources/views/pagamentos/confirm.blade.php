@@ -17,16 +17,22 @@
                     <div class="row">
                         @include('include.message')
 
-                       <div class="col-md-12">
+                       <div class="col-md-12 mb-3">
                         <div class="card">
                             <div class="card-body">
-                              {{ $data['estudante_id'] }}
+                              <div class="col-title mb-2"><span class="bold">Nome Completo:</span> {{ $pessoa->nome }}</div>
+                              <div class="col-title mb-2"><span>Nº do Bilhete:</span> {{ $pessoa->bi }}</div>
+                              <div class="col-title mb-2"><span>Nº de Telefone:</span> {{ $pessoa->telefone }}</div>
+                              <div class="col-title mb-2"><span>Mês:</span> {{ $mes->mes }}</div>
+                              <div class="col-title mb-2"><span>Ano:</span> {{ $data['ano'] }}</div>
+                              <div class="col-title mb-2"><span>Preço:</span> {{ number_format($data['valor'], 2,',','.') }}</div>
+                              <div class="col-title mb-2"><span>Data do Pagamento:</span> {{ date('d-m-Y') }}</div>
                             </div>
                         </div>
                        </div>
 
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Confirmar</button>
                         </div>
                     </div>
 
