@@ -13,6 +13,7 @@ class Pagamento extends Model
        'estudante_id',
        'mes_id',
        'viatura_id',
+       'ano',
        'valor',
        'estado',
     ];

@@ -29,13 +29,14 @@ Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura'
 Route::resource('users', UserController::class);
 Route::resource('viaturas', ViaturaController::class);
 
-Route::prefix('pagamentos')->group(function(){
-    Route::get('create', [PagamentoController::class, 'create']);
+Route::prefix('pagamentos')->group(function () {
+    Route::get('create/{bi?}', [PagamentoController::class, 'create']);
+    Route::get('confirm', [PagamentoController::class, 'confirm']);
+    Route::post('/', [PagamentoController::class, 'store']);
 });
 
-Route::prefix('auth')->group(function(){
+Route::prefix('auth')->group(function () {
     Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
     Route::post('login', [AuthController::class, 'logar'])->middleware('guest');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
-

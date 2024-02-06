@@ -13,7 +13,11 @@ class TabelaPrecoSeeder extends Seeder
             'descricao' => "Transporte Escolar",
             'preco' => "7500",
             'data_implementacao' => "2024-01-31",
-        ]
+        ],[
+            'descricao' => "Transporte Escolar",
+            'preco' => "8000",
+            'data_implementacao' => "2024-02-06",
+        ],
     ];
     /**
      * Run the database seeds.

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('estudante_id');
             $table->unsignedBigInteger('mes_id');
             $table->unsignedBigInteger('viatura_id')->nullable();
+            $table->integer('ano');
             $table->string('valor');
             $table->string('estado')->default('on');
             $table->timestamps();

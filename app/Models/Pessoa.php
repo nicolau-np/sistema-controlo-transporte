@@ -22,6 +22,6 @@ class Pessoa extends Model
     }
 
     public function estudante(){
-        return $this->hasMany(Estudante::class, 'estudante_id');
+        return $this->hasMany(Estudante::class, 'pessoa_id');
     }
 }
