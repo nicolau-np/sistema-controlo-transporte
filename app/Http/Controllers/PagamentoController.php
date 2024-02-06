@@ -7,6 +7,7 @@ use App\Models\Pagamento;
 use App\Models\Pessoa;
 use App\Models\TabelaPreco;
 use App\Models\Viatura;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -59,7 +60,7 @@ class PagamentoController extends Controller
             'mes_id' => 'required|integer|exists:meses,id',
             'viatura_id' => 'required|integer|exists:viaturas,id',
             'preco' => 'required|numeric|exists:tabela_precos,preco',
-            'ano' => 'required|integer',
+            'ano' => 'required|integer|in:' . Carbon::now()->year,
         ], [], [
             'bi' => "Nº do Bilhete",
             'mes_id' => "Mês",
