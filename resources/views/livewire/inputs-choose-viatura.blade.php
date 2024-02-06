@@ -2,7 +2,7 @@
     @if ($viaturas)
         @foreach ($viaturas as $viatura)
             <div class="option-radio">
-                <input type="radio" id="viatura_id" name="option" value="{{ $viatura->id }}">
+                <input type="radio" name="viatura_id" value="{{ $viatura->id }}">
                 <label for="option{{ $viatura->id }}">{{ $viatura->matricula }}</label>
                 <div class="marca">{{ $viatura->marca }}</div>
                 <div class="modelo">{{ $viatura->modelo }}</div>

@@ -25,6 +25,7 @@
                               <div class="col-title mb-2"><span>Nº de Telefone:</span> {{ $pessoa->telefone }}</div>
                               <div class="col-title mb-2"><span>Mês:</span> {{ $mes->mes }}</div>
                               <div class="col-title mb-2"><span>Ano:</span> {{ $data['ano'] }}</div>
+                              <div class="col-title mb-2"><span>Viatura:</span> {{ $viatura->matricula }} [{{ $viatura->marca }} - {{ $viatura->modelo }}]</div>
                               <div class="col-title mb-2"><span>Preço:</span> {{ number_format($data['valor'], 2,',','.') }}</div>
                               <div class="col-title mb-2"><span>Data do Pagamento:</span> {{ date('d-m-Y') }}</div>
                             </div>

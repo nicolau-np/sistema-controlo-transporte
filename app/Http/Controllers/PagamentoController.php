@@ -57,13 +57,13 @@ class PagamentoController extends Controller
         $request->validate([
             'bi' => 'required|string|exists:pessoas,bi',
             'mes_id' => 'required|integer|exists:meses,id',
-            'viatura_id'=>'required|integer|exists:viaturas,id',
+            'viatura_id' => 'required|integer|exists:viaturas,id',
             'preco' => 'required|numeric|exists:tabela_precos,preco',
             'ano' => 'required|integer',
         ], [], [
             'bi' => "Nº do Bilhete",
             'mes_id' => "Mês",
-            'viatura_id'=>"Viatura",
+            'viatura_id' => "Viatura",
             'preco' => 'Preço',
             'ano' => 'Ano',
         ]);
@@ -73,14 +73,16 @@ class PagamentoController extends Controller
             return back()->with('error', 'Bilhete de Identidade Inválido');
 
         $mes = Meses::findOrFail($request->mes_id);
+        $viatura = Viatura::findOrFail($request->viatura_id);
 
-        $pagamento = Pagamento::where(['mes_id' => $request->mes_id, 'ano' => $request->ano])->first();
+        $pagamento = Pagamento::where(['mes_id' => $request->mes_id, 'ano' => $request->ano, 'estudante_id'=>$pessoa->estudante->first()->id])->first();
         if ($pagamento)
             return back()->with('error', "Já efectuou o pagamento para o Mês de $mes->mes");
 
         $data = [
             'estudante_id' => $pessoa->estudante->first()->id,
             'mes_id' => $request->mes_id,
+            'viatura_id' => $request->viatura_id,
             'ano' => $request->ano,
             'valor' => $request->preco,
         ];
@@ -91,7 +93,7 @@ class PagamentoController extends Controller
         $menu = 'Confirmar Pagamento';
         $type = 'pagamentos';
 
-        return view('pagamentos.confirm', compact('title', 'menu', 'type', 'data', 'pessoa', 'mes'));
+        return view('pagamentos.confirm', compact('title', 'menu', 'type', 'data', 'pessoa', 'mes', 'viatura'));
     }
 
     public function store(Request $request)
