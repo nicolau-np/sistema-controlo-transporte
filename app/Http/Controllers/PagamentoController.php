@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Session;
 class PagamentoController extends Controller
 {
 
+    public function index(){
+        $title = 'Pagamentos';
+        $menu = 'Listar Pagamento';
+        $type = 'pagamentos';
+
+        return view('pagamentos.index', compact('title', 'menu', 'type'));
+    }
+
     public function create($bi = null)
     {
         $pessoa = null;
