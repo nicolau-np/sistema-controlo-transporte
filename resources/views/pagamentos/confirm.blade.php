@@ -17,14 +17,13 @@
                     <div class="row">
                         @include('include.message')
 
-                        <div class="col-md-5 mb-3">
-                            <label for="">Nº do Bilhete <span class="text-danger">*</span></label>
-                            <input type="text" name="bi" placeholder="Nº do Bilhete" class="form-control"
-                                value="{{ old('bi', null) }}" />
-                            @if ($errors->has('bi'))
-                                <span class="text-danger">{{ $errors->first('bi') }}</span>
-                            @endif
+                       <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                              {{ $data['estudante_id'] }}
+                            </div>
                         </div>
+                       </div>
 
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary">Confirmar</button>

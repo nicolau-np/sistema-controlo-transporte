@@ -48,6 +48,7 @@
                                     <td>{{ $estudante->turma->turma }}</td>
                                     <td>
                                         <a href="/estudantes/{{ $estudante->id }}/edit" class="btn btn-primary">Editar</a>
+                                        <a href="/pagamentos/create/{{ $estudante->pessoa->bi }}" class="btn btn-warning ml-3">Pagar</a>
                                        <!-- <form action="/estudantes/{{ $estudante->id }}" method="POST">
                                             @method('DELETE')
                                             @csrf
