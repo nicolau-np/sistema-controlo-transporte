@@ -90,7 +90,7 @@
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item {{ $type == 'pagamentos' ? 'active' : null }}">
-                    <a class="nav-link" href="/pagamentos">
+                    <a class="nav-link" href="/pagamentos/create">
                         <i class="fas fa-fw fa-money-bill"></i>
                         <span>Pagamentos</span></a>
                 </li>

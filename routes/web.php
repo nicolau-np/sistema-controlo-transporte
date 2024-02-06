@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EstudanteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MotoristaController;
+use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViaturaController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,9 @@ Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura'
 Route::resource('users', UserController::class);
 Route::resource('viaturas', ViaturaController::class);
 
+Route::prefix('pagamentos')->group(function(){
+    Route::get('create', [PagamentoController::class, 'create']);
+});
 
 Route::prefix('auth')->group(function(){
     Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
