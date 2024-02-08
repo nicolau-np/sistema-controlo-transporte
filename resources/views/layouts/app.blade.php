@@ -20,8 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/neutro/css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     @livewireStyles()
     @livewireScripts()
 </head>
@@ -99,12 +101,13 @@
                 </li>
 
                 <!-- Nav Item - Tables -->
-                <li class="nav-item {{ $type == 'relatorios' ? 'active' : null }}">
-                    <a class="nav-link" href="/reports">
-                        <i class="fas fa-fw fa-file"></i>
-                        <span>Relatórios</span></a>
-                </li>
-
+                @if (Auth::user()->nivel_acesso == 'admin')
+                    <li class="nav-item {{ $type == 'relatorios' ? 'active' : null }}">
+                        <a class="nav-link" href="/reports">
+                            <i class="fas fa-fw fa-file"></i>
+                            <span>Relatórios</span></a>
+                    </li>
+                @endif
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 

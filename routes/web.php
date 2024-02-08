@@ -41,8 +41,12 @@ Route::prefix('pagamentos')->middleware('auth')->group(function () {
     Route::get('/', [PagamentoController::class, 'index']);
 });
 
-Route::prefix('reports')->middleware('auth')->group(function(){
-Route::get('comprovativo/{pagamento_id}', [ReportController::class, 'comprovativo']);
+Route::prefix('reports')->middleware('auth')->group(function () {
+    Route::get('/', [ReportController::class, 'index'])->middleware('auth.admin');
+    Route::get('balanco-create', [ReportController::class, 'balancoCreate'])->middleware('auth.admin');
+    Route::get('balanco', [ReportController::class, 'balanco'])->middleware('auth.admin');
+
+    Route::get('comprovativo/{pagamento_id}', [ReportController::class, 'comprovativo']);
 });
 
 Route::prefix('auth')->group(function () {
