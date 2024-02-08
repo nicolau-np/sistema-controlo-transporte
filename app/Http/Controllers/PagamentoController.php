@@ -118,6 +118,6 @@ class PagamentoController extends Controller
 
         $pagamento->delete();
 
-        return back()->with('success', "Pagamento eliminado com sucesso");
+        return redirect("/pagamentos")->with('success', "Pagamento eliminado com sucesso");
     }
 }
