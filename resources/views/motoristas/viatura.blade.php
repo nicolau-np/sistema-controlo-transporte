@@ -9,7 +9,7 @@
 
         <!-- Content Row -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-4">
                 <form method="POST" action="/motoristas/{{ $motorista->id }}/viatura">
                     @method('PUT')
                     @csrf
@@ -54,6 +54,35 @@
                     </div>
 
                 </form>
+            </div>
+
+            <div class="col-md-12">
+                <div class="table-resposive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Matricula</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Data Atribuição</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($viatura_motoristas as $viatura_motorista)
+                            <tr>
+                                <td>{{ $viatura_motorista->viatura->matricula }}</td>
+                                <td>{{ $viatura_motorista->viatura->marca }}</td>
+                                <td>{{ $viatura_motorista->viatura->modelo }}</td>
+                                <td>{{ date('d-m-Y', strtotime($viatura_motorista->data_atribuicao)) }}</td>
+                                <td>
+                                    <a href="/motoristas/viatura/destroy/{{ $viatura_motorista->id }}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

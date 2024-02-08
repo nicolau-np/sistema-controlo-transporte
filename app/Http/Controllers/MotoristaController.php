@@ -141,38 +141,44 @@ class MotoristaController extends Controller
     public function viatura($motorista_id)
     {
         $motorista = Motorista::findOrFail($motorista_id);
-
+        $viatura_motoristas = ViaturaMotorista::where('motorista_id', $motorista_id)->orderBy('data_atribuicao', 'desc')->get();
         $viaturas = Viatura::all();
         $title = 'Motorista';
         $menu = 'Viatura';
         $type = 'motoristas';
 
-        return view('motoristas.viatura', compact('title', 'menu', 'type', 'motorista', 'viaturas'));
+        return view('motoristas.viatura', compact('title', 'menu', 'type', 'motorista', 'viaturas', 'viatura_motoristas'));
     }
 
     public function saveViatura(Request $request, $motorista_id)
     {
-
         $motorista = Motorista::findOrFail($motorista_id);
 
         $request->validate([
             'viatura_id' => 'required|integer|exists:viaturas,id',
-            'motorista_id' => 'required|integer|exists:motoristas,id',
-            'data_atribuicao' => 'required|data',
+            'data_atribuicao' => 'required|date',
         ], [], [
             'viatura_id' => 'Viatura',
-            'motorista_id' => 'Motorista',
             'data_atribuicao' => 'Data de Atribuição',
         ]);
 
         $data_viatura_motorista = [
-            'viatura_id'=>$request->viatura_id,
-            'motorista_id'=>$motorista_id,
-            'data_atribuicao'=>$request->data_atribuicao,
+            'viatura_id' => $request->viatura_id,
+            'motorista_id' => $motorista_id,
+            'data_atribuicao' => $request->data_atribuicao,
         ];
-        
+
         ViaturaMotorista::create($data_viatura_motorista);
 
         return back()->with('success', 'Feito com sucesso');
+    }
+
+    public function destroyViatura($viatura_motorista_id)
+    {
+        $viatura_motorista = ViaturaMotorista::findOrFail($viatura_motorista_id);
+
+        $viatura_motorista->delete();
+
+        return back()->with('success', "Eliminado com sucesso");
     }
 }

@@ -26,6 +26,7 @@ Route::resource('estudantes', EstudanteController::class);
 Route::resource('motoristas', MotoristaController::class);
 Route::get('motoristas/{id}/viatura', [MotoristaController::class, 'viatura']);
 Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura']);
+Route::get('motoristas/viatura/destroy/{viatura_motorista_id}', [MotoristaController::class, 'destroyViatura']);
 Route::resource('users', UserController::class);
 Route::resource('viaturas', ViaturaController::class);
 
