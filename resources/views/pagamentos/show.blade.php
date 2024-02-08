@@ -34,10 +34,19 @@
                             <form action="/pagamentos/{{ $pagamento->id }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                    Eliminar
-                                </button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-danger mr-4">
+                                            <i class="fas fa-trash"></i>
+                                            Eliminar
+                                        </button>
+
+                                        <a href="/reports/comprovativo/{{ $pagamento->id }}"
+                                            class="btn btn-primary"><i class="fas fa-print"></i> Imprimir
+                                            Comprovativo</a>
+                                    </div>
+                                </div>
+
                             </form>
 
                         </div>
