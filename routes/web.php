@@ -22,21 +22,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('estudantes', EstudanteController::class);
-Route::resource('motoristas', MotoristaController::class);
-Route::get('motoristas/{id}/viatura', [MotoristaController::class, 'viatura']);
-Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura']);
-Route::get('motoristas/viatura/destroy/{viatura_motorista_id}', [MotoristaController::class, 'destroyViatura']);
-Route::resource('users', UserController::class);
-Route::resource('viaturas', ViaturaController::class);
+Route::resource('estudantes', EstudanteController::class)->middleware('auth');
+Route::resource('motoristas', MotoristaController::class)->middleware('auth');;
+Route::get('motoristas/{id}/viatura', [MotoristaController::class, 'viatura'])->middleware('auth');
+Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura'])->middleware('auth');
+Route::get('motoristas/viatura/destroy/{viatura_motorista_id}', [MotoristaController::class, 'destroyViatura'])->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('viaturas', ViaturaController::class)->middleware('auth');
 
-Route::prefix('pagamentos')->group(function () {
+Route::prefix('pagamentos')->middleware('auth')->group(function () {
     Route::get('create/{bi?}', [PagamentoController::class, 'create']);
     Route::get('confirm', [PagamentoController::class, 'confirm']);
     Route::get('/{id}', [PagamentoController::class, 'show']);
-    Route::delete('/{id}', [PagamentoController::class, 'destroy']);
+    Route::delete('/{id}', [PagamentoController::class, 'destroy'])->middleware('auth.admin');
     Route::post('/', [PagamentoController::class, 'store']);
     Route::get('/', [PagamentoController::class, 'index']);
+});
+
+Route::prefix('reports')->middleware('auth')->group(function(){
+
 });
 
 Route::prefix('auth')->group(function () {
