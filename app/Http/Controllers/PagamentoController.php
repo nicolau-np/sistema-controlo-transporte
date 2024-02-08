@@ -108,7 +108,7 @@ class PagamentoController extends Controller
         $pagamento = Pagamento::create(Session::get('dataPagamento'));
         if ($pagamento) {
             Session::forget('dataPagamento');
-            return redirect('/pagamentos/create')->with('success', 'Pagamento Efectuado com sucesso');
+            return redirect('/reports/comprovativo/'.$pagamento->id)->with('success', 'Pagamento Efectuado com sucesso');
         }
     }
 

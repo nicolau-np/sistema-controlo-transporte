@@ -5,6 +5,7 @@ use App\Http\Controllers\EstudanteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\PagamentoController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViaturaController;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +41,7 @@ Route::prefix('pagamentos')->middleware('auth')->group(function () {
 });
 
 Route::prefix('reports')->middleware('auth')->group(function(){
-
+Route::get('comprovativo/{pagamento_id}', [ReportController::class, 'comprovativo']);
 });
 
 Route::prefix('auth')->group(function () {

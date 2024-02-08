@@ -12,7 +12,7 @@ class ReportController extends Controller
     {
         $pagamento = Pagamento::findOrFail($pagamento_id);
 
-        $pdf = PDF::loadView('report.comprovativo', compact('pagamento'))->setPaper('A4', 'normal');
+        $pdf = PDF::loadView('reports.comprovativo', compact('pagamento'))->setPaper('A4', 'normal');
         return $pdf->stream("Comprovativo.pdf");
     }
 }
