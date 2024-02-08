@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classe;
 use App\Models\Estudante;
+use App\Models\Pagamento;
 use Illuminate\Http\Request;
 
 class EstudanteController extends Controller
@@ -77,5 +78,15 @@ class EstudanteController extends Controller
     public function destroy(string $id)
     {
 
+    }
+
+    public function extrato($estudante_id){
+        $estudante = Estudante::findOrFail($estudante_id);
+        $pagamentos = Pagamento::where('estudante_id', $estudante_id)->get();
+        $title = 'Estudantes';
+        $menu = 'Extrato';
+        $type = 'estudantes';
+
+        return view('estudantes.extrato', compact('title', 'menu', 'type', 'estudante', 'pagamentos'));
     }
 }

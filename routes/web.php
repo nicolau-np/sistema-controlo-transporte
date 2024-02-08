@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::resource('estudantes', EstudanteController::class)->middleware('auth');
+Route::get('estudantes/{id}/extrato', [EstudanteController::class, 'extrato'])->middleware('auth');
 Route::resource('motoristas', MotoristaController::class)->middleware('auth');;
 Route::get('motoristas/{id}/viatura', [MotoristaController::class, 'viatura'])->middleware('auth');
 Route::put('motoristas/{id}/viatura', [MotoristaController::class, 'saveViatura'])->middleware('auth');

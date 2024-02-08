@@ -47,8 +47,9 @@
                                     <td>{{ $estudante->pessoa->telefone }}</td>
                                     <td>{{ $estudante->turma->turma }}</td>
                                     <td>
-                                        <a href="/estudantes/{{ $estudante->id }}/edit" class="btn btn-primary">Editar</a>
-                                        <a href="/pagamentos/create/{{ $estudante->pessoa->bi }}" class="btn btn-warning ml-3">Pagar</a>
+                                        <a href="/estudantes/{{ $estudante->id }}/edit" class="btn btn-primary mr-3">Editar</a>
+                                        <a href="/estudantes/{{ $estudante->id }}/extrato" class="btn btn-success mr-3">Extrato</a>
+                                        <a href="/pagamentos/create/{{ $estudante->pessoa->bi }}" class="btn btn-warning mr-3">Pagar</a>
                                        <!-- <form action="/estudantes/{{ $estudante->id }}" method="POST">
                                             @method('DELETE')
                                             @csrf
