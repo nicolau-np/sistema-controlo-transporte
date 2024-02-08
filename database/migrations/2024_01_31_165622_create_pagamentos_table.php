@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('viatura_id')->nullable();
             $table->integer('ano');
             $table->string('valor');
+            $table->date('data_pagamento');
             $table->string('estado')->default('on');
             $table->timestamps();
 

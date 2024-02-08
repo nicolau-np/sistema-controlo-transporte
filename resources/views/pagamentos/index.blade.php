@@ -51,9 +51,9 @@
                                     <td>{{ $pagamento->ano }}</td>
                                     <td>{{ number_format($pagamento->valor,2,',','.') }}</td>
                                     <td>{{ $pagamento->viatura->matricula ?? null }}</td>
-                                    <td>{{ date('d-m-Y H:i', strtotime($pagamento->created_at)) }}</td>
+                                    <td>{{ date('d-m-Y H:i', strtotime($pagamento->data_pagamento)) }}</td>
                                     <td>
-                                        <a href="/pagamentos/{{ $pagamento->bi }}" class="btn btn-warning ml-3">Detalhes</a>
+                                        <a href="/pagamentos/{{ $pagamento->id }}" class="btn btn-warning ml-3">Detalhes</a>
                                     </td>
                                 </tr>
                             @endforeach

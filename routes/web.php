@@ -33,8 +33,9 @@ Route::resource('viaturas', ViaturaController::class);
 Route::prefix('pagamentos')->group(function () {
     Route::get('create/{bi?}', [PagamentoController::class, 'create']);
     Route::get('confirm', [PagamentoController::class, 'confirm']);
-    Route::post('/', [PagamentoController::class, 'store']);
     Route::get('/{id}', [PagamentoController::class, 'show']);
+    Route::delete('/{id}', [PagamentoController::class, 'destroy']);
+    Route::post('/', [PagamentoController::class, 'store']);
     Route::get('/', [PagamentoController::class, 'index']);
 });
 

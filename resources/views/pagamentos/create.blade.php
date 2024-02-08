@@ -38,9 +38,18 @@
                         <div class="col-md-2 mb-3">
                             <label for="">Preço <span class="text-danger">*</span></label>
                             <input type="text" name="preco" placeholder="Preço" class="form-control"
-                            value="{{ old('preco', $tabela_preco->preco) }}" />
+                                value="{{ old('preco', $tabela_preco->preco) }}" />
                             @if ($errors->has('preco'))
                                 <span class="text-danger">{{ $errors->first('preco') }}</span>
+                            @endif
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label for="">Data do Pagamento <span class="text-danger">*</span></label>
+                            <input type="date" name="data_pagamento" placeholder="Data do Pagamento" class="form-control"
+                                value="{{ old('data_pagamento', date('d-m-Y')) }}" />
+                            @if ($errors->has('data_pagamento'))
+                                <span class="text-danger">{{ $errors->first('data_pagamento') }}</span>
                             @endif
                         </div>
 
@@ -59,8 +68,8 @@
                             @livewire('inputs-choose-viatura')
                             <div class="message">
                                 @if ($errors->has('viatura_id'))
-                                <span class="text-danger">{{ $errors->first('viatura_id') }}</span>
-                            @endif
+                                    <span class="text-danger">{{ $errors->first('viatura_id') }}</span>
+                                @endif
                             </div>
                         </div>
 

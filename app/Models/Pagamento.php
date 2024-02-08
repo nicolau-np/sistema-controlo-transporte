@@ -15,6 +15,7 @@ class Pagamento extends Model
        'viatura_id',
        'ano',
        'valor',
+       'data_pagamento',
        'estado',
     ];
 

@@ -60,12 +60,14 @@ class PagamentoController extends Controller
             'mes_id' => 'required|integer|exists:meses,id',
             'viatura_id' => 'required|integer|exists:viaturas,id',
             'preco' => 'required|numeric|exists:tabela_precos,preco',
+            'data_pagamento' => 'required|date',
             'ano' => 'required|integer|in:' . Carbon::now()->year,
         ], [], [
             'bi' => "Nº do Bilhete",
             'mes_id' => "Mês",
             'viatura_id' => "Viatura",
             'preco' => 'Preço',
+            'data_pagamento' => "Data do Pagamento",
             'ano' => 'Ano',
         ]);
 
@@ -76,7 +78,7 @@ class PagamentoController extends Controller
         $mes = Meses::findOrFail($request->mes_id);
         $viatura = Viatura::findOrFail($request->viatura_id);
 
-        $pagamento = Pagamento::where(['mes_id' => $request->mes_id, 'ano' => $request->ano, 'estudante_id'=>$pessoa->estudante->first()->id])->first();
+        $pagamento = Pagamento::where(['mes_id' => $request->mes_id, 'ano' => $request->ano, 'estudante_id' => $pessoa->estudante->first()->id])->first();
         if ($pagamento)
             return back()->with('error', "Já efectuou o pagamento para o Mês de $mes->mes");
 
@@ -85,10 +87,11 @@ class PagamentoController extends Controller
             'mes_id' => $request->mes_id,
             'viatura_id' => $request->viatura_id,
             'ano' => $request->ano,
+            'data_pagamento' => $request->data_pagamento,
             'valor' => $request->preco,
         ];
 
-        Session::put('data_pagamento', $data);
+        Session::put('dataPagamento', $data);
 
         $title = 'Pagamentos';
         $menu = 'Confirmar Pagamento';
@@ -99,13 +102,22 @@ class PagamentoController extends Controller
 
     public function store(Request $request)
     {
-        if (!Session::has('data_pagamento'))
+        if (!Session::has('dataPagamento'))
             return back()->with('error', 'Erro ao confirmar Pagamento. Tente Novamente');
 
-        $pagamento = Pagamento::create(Session::get('data_pagamento'));
+        $pagamento = Pagamento::create(Session::get('dataPagamento'));
         if ($pagamento) {
-            Session::forget('data_pagamento');
+            Session::forget('dataPagamento');
             return redirect('/pagamentos/create')->with('success', 'Pagamento Efectuado com sucesso');
         }
+    }
+
+    public function destroy(string $id)
+    {
+        $pagamento = Pagamento::findOrFail($id);
+
+        $pagamento->delete();
+
+        return back()->with('success', "Pagamento eliminado com sucesso");
     }
 }
