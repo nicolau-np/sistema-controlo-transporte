@@ -34,9 +34,7 @@
                                 <th>B.I</th>
                                 <th>Nome</th>
                                 <th>Mês</th>
-                                <th>Ano</th>
                                 <th>Preço</th>
-                                <th>Viatura</th>
                                 <th>Data do Pagamento</th>
                                 <th></th>
                             </tr>
@@ -48,10 +46,8 @@
 
                                     <td>{{ $pagamento->estudante->pessoa->nome }}</td>
                                     <td>{{ $pagamento->mes->mes }}</td>
-                                    <td>{{ $pagamento->ano }}</td>
                                     <td>{{ number_format($pagamento->valor,2,',','.') }}</td>
-                                    <td>{{ $pagamento->viatura->matricula ?? null }}</td>
-                                    <td>{{ date('d-m-Y H:i', strtotime($pagamento->data_pagamento)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($pagamento->data_pagamento)) }}</td>
                                     <td>
                                         <a href="/pagamentos/{{ $pagamento->id }}" class="btn btn-warning ml-3">Detalhes</a>
                                     </td>

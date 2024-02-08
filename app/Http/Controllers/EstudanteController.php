@@ -82,9 +82,9 @@ class EstudanteController extends Controller
 
     public function extrato($estudante_id){
         $estudante = Estudante::findOrFail($estudante_id);
-        $pagamentos = Pagamento::where('estudante_id', $estudante_id)->get();
-        $title = 'Estudantes';
-        $menu = 'Extrato';
+        $pagamentos = Pagamento::where('estudante_id', $estudante_id)->orderBy('data_pagamento', 'desc')->paginate(20);
+        $title = 'Extrato';
+        $menu = $estudante->pessoa->nome;
         $type = 'estudantes';
 
         return view('estudantes.extrato', compact('title', 'menu', 'type', 'estudante', 'pagamentos'));
